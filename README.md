@@ -53,4 +53,24 @@ Contains:
 ---
 
 ## 🧰 Project Structure
-
+MNIST_TRANSFORMER/
+│
+├── app.py # Optional FastAPI deployment script
+├── index.html # Digit drawing canvas UI
+│
+├── mnist_generator.py # Data generators for tiled/scattered MNIST
+├── model.py # Transformer model classes
+├── train_ViT.py # Training script for encoder-decoder
+│
+├── ViT_Encoder_Classification.ipynb # Encoder-only ViT for classification
+├── ViT_Encoder_Decoder.ipynb # Encoder-decoder model training + inference
+│
+├── model/ # Folder for saved .pth checkpoints
+│ └── robust-spaceship-6/
+├── samples/ # Generated samples from scattered or tiled dataset
+├── wandb/ # (Optional) experiment tracking artifacts
+│
+├── requirements.txt # Python dependencies
+├── bar.torch # Saved model checkpoint
+├── transformer_mnist.pth # Default model file
+├── README.md 
