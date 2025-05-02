@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>MNIST Transformer Canvas</title>
+</head>
+
+<body>
+    <h3>Draw Your Digits (2x2 grid)</h3>
+
+    <canvas id="canvas" width="280" height="280" style="border:1px solid black; background-color: white;"></canvas>
+    <br><br>
+    <button onclick="toggleMode()">✏️ Toggle Mode</button>
+    <button onclick="submit()">Predict</button>
+    <button onclick="clearCanvas()">🧹 Clear</button>
+
+    <p id="mode">Mode: Draw</p>
+    <p id="output"></p>
+
+    <script>
+        const canvas = document.getElementById('canvas');
+        const ctx = canvas.getContext('2d');
+
+        // Initial canvas setup
+        ctx.fillStyle = "black";
+        ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+        let drawing = false;
+        let isErasing = false;
+
+        canvas.onmousedown = () => drawing = true;
+        canvas.onmouseup = () => drawing = false;
+        canvas.onmousemove = (e) => {
+            if (drawing) {
+                ctx.fillStyle = isErasing ? "black" : "white";
+                ctx.beginPath();
+                ctx.arc(e.offsetX, e.offsetY, 10, 0, 2 * Math.PI);
+                ctx.fill();
+            }
+        };
+
+        function toggleMode() {
+            isErasing = !isErasing;
+            document.getElementById("mode").innerText = "Mode: " + (isErasing ? "Erase" : "Draw");
+        }
+
+        function clearCanvas() {
+            ctx.fillStyle = "black";
+            ctx.fillRect(0, 0, canvas.width, canvas.height);
+            document.getElementById("output").innerText = "";
+        }
+
+        function submit() {
+            const dataURL = canvas.toDataURL("image/png");
+            fetch("http://localhost:8000/predict/", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({ image_base64: dataURL })
+            })
+                .then(res => res.json())
+                .then(data => {
+                    document.getElementById("output").innerText = "Prediction: " + data.prediction.join(" ");
+                })
+                .catch(err => {
+                    console.error("Prediction failed:", err);
+                    document.getElementById("output").innerText = "Prediction failed";
+                });
+        }
+    </script>
+</body>
+
+</html>

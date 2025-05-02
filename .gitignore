@@ -1,0 +1,32 @@
+# Byte-compiled / cache files
+__pycache__/
+*.py[cod]
+*.ipynb_checkpoints
+
+# VS Code settings
+.vscode/
+
+# Jupyter runtime
+*.ipynb_checkpoints/
+*.checkpoint
+
+# Virtual env
+venv/
+
+# Model files and outputs
+*.pth
+*.pt
+bar.torch
+Vit.model
+samples/
+wandb/
+model/denim-dew-4/
+model/robust-spaceship-6/
+
+# Datasets
+data/
+MNIST/
+
+# System files
+.DS_Store
+Thumbs.db
