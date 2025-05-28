@@ -1,10 +1,10 @@
-# 🧠 MNIST Transformer Project
+# MNIST Transformer Project
 
 This repository explores the MNIST dataset using Transformer-based architectures in two distinct ways:
 
 ---
 
-## 📌 Project 1: Encoder-only Vision Transformer (ViT)
+## Project 1: Encoder-only Vision Transformer (ViT)
 
 **File:** `ViT_Encoder_Classification.ipynb`
 
@@ -12,7 +12,7 @@ A Vision Transformer classifier trained directly on the MNIST dataset using only
 
 ---
 
-## 📌 Project 2: Encoder–Decoder Transformer for Tiled Digit Recognition
+## Project 2: Encoder–Decoder Transformer for Tiled Digit Recognition
 
 **Files:**
 - `train_ViT.py`
@@ -24,7 +24,7 @@ We create synthetic sequences by tiling multiple MNIST digits (2x2 grid) into a 
 
 ---
 
-## 🧪 Data Generation
+## Data Generation
 
 **File:** `mnist_generator.py`
 
@@ -40,7 +40,7 @@ Classes:
 
 ---
 
-## 🧠 Model Architectures
+## Model Architectures
 
 **File:** `model.py`
 
@@ -52,7 +52,7 @@ Contains:
 
 ---
 
-## 🧰 Project Structure
+## Project Structure
 MNIST_TRANSFORMER/
 │
 ├── app.py # Optional FastAPI deployment script
